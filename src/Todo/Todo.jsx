@@ -4,7 +4,7 @@ import TodoList from "./TodoList";
 
 export default function Todo() {
   const [list, setList] = useState([]);
-  const [showComplete, setShowComplete] = useState(false);
+  const [showComplete, setShowComplete] = useState(true);
 
   const handleSubmit = ({ title, description }) => {
     const payload = {
@@ -23,7 +23,7 @@ export default function Todo() {
       <TodoInput onSubmit={handleSubmit} />
       <TodoList data={list.filter((item) => !item.status)} />
 
-      <button onClick={() => setShowComplete(!showComplete)}>Toggle</button>
+      <button onClick={() => setShowComplete(!showComplete)}>{showComplete ? "HIDE COMPLETED" : "SHOW COMPLETED"}</button>
 
       {showComplete && <TodoList data={list.filter((item) => item.status)} />}
     </>
